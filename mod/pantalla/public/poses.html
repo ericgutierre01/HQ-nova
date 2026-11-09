@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova HQ · Poses y colores</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "DM Sans", system-ui, sans-serif; background: #F3F4F6; color: #1F2937; padding: 28px 16px; }
+  h1 { font-size: 22px; font-weight: 600; margin: 0 auto 4px; max-width: 1180px; }
+  p.sub { color: #6B7280; font-size: 13px; margin: 0 auto 18px; max-width: 1180px; }
+  .grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 110px repeat(8, minmax(0, 1fr)); gap: 6px; background: #fff; border: 1px solid #E5E7EB; border-radius: 14px; padding: 14px; overflow-x: auto; }
+  .h { font-size: 12px; color: #6B7280; text-align: center; align-self: end; padding-bottom: 4px; }
+  .row { font-size: 13px; font-weight: 600; align-self: center; }
+  .row small { display: block; font-weight: 400; color: #9CA3AF; font-size: 11px; }
+  .cell { aspect-ratio: 1; min-width: 84px; }
+</style>
+</head>
+<body>
+<h1>Nova HQ: poses y colores</h1>
+<p class="sub">Nova original = agente principal. Las demás son las ayudantes (subagentes), con colores por tipo.</p>
+<div class="grid" id="grid"></div>
+<script type="module">
+  import { novaSVG, NOVA_CSS, PALETTES, STATES, STATE_LABEL } from '/nova.js';
+  const ROLE = { nova: 'principal', azul: 'Explore', violeta: 'Plan', ambar: 'general-purpose', coral: 'otras', rosa: 'otras', lima: 'otras' };
+  document.head.insertAdjacentHTML('beforeend', `<style>${NOVA_CSS}</style>`);
+  const g = document.getElementById('grid');
+  g.insertAdjacentHTML('beforeend', '<div></div>' + STATES.map(s => `<div class="h">${STATE_LABEL[s]}<br><code>${s}</code></div>`).join(''));
+  for (const key of Object.keys(PALETTES)) {
+    g.insertAdjacentHTML('beforeend', `<div class="row">${PALETTES[key].name}<small>${ROLE[key]}</small></div>` +
+      STATES.map(s => `<div class="cell">${novaSVG(s, { palette: key })}</div>`).join(''));
+  }
+</script>
+</body>
+</html>

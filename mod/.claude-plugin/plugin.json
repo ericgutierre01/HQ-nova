@@ -1,0 +1,23 @@
+{
+  "name": "nova-hq",
+  "version": "1.0.0",
+  "description": "Nova: una por agente, en su oficina, mostrando en vivo en qué trabaja cada uno",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "size": {
+      "type": "number",
+      "title": "Tamaño",
+      "description": "Alto de la franja de Nova, en píxeles",
+      "default": 60
+    },
+    "peek": {
+      "type": "boolean",
+      "title": "Telescopio al escribir",
+      "description": "Claude espía con un telescopio mientras escribes",
+      "default": true
+    }
+  },
+  "author": {
+    "name": "Eric Gutiérrez y Kevyn Mieses"
+  }
+}

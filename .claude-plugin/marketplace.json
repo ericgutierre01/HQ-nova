@@ -1,0 +1,16 @@
+{
+  "name": "hq-nova-ia",
+  "owner": {
+    "name": "Eric Gutiérrez y Kevyn Mieses"
+  },
+  "metadata": {
+    "description": "HQ-nova: una Nova animada por cada agente de Claude Code, en el chat y en una pantalla aparte."
+  },
+  "plugins": [
+    {
+      "name": "nova-hq",
+      "source": "./mod",
+      "description": "La banda de Novas encima del prompt de Claude."
+    }
+  ]
+}
